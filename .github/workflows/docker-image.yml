@@ -45,12 +45,18 @@ jobs:
         mkdir -p ~/.ssh
         ssh-keyscan -H 201.23.3.86 >> ~/.ssh/known_hosts
 
+    - name: Test SSH connection
+      run: |
+        ssh -i ~/.ssh/id_rsa aluno@201.23.3.86 "echo 'SSH connection successful!'"
+
     - name: Deploy container to remote server
       run: |
+        # Start Docker if not running
         ssh -i ~/.ssh/id_rsa aluno@201.23.3.86 "docker info || sudo systemctl start docker"
-        
-        
+
+        # Pull the latest image from DockerHub and run the container
         ssh -i ~/.ssh/id_rsa aluno@201.23.3.86 "docker pull ${{ secrets.DOCKERHUB_USERNAME }}/atividade:latest && \
           docker run -d -p 8097:8097 ${{ secrets.DOCKERHUB_USERNAME }}/atividade:latest"
 
+        # Verify the container is running
         ssh -i ~/.ssh/id_rsa aluno@201.23.3.86 "docker ps"
