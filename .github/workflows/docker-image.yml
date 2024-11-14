@@ -27,7 +27,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/meu-projeto:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/atividade:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -47,4 +47,4 @@ jobs:
 
     - name: Deploy container to remote server
       run: |
-        ssh -i ~/.ssh/id_rsa aluno@201.23.3.86 "docker pull ${{ secrets.DOCKERHUB_USERNAME }}/meu-projeto:latest && docker run -d -p 8097:8097 ${{ secrets.DOCKERHUB_USERNAME }}/meu-projeto:latest"
+        ssh -i ~/.ssh/id_rsa aluno@201.23.3.86 "docker pull ${{ secrets.DOCKERHUB_USERNAME }}/atividade:latest && docker run -d -p 8097:8097 ${{ secrets.DOCKERHUB_USERNAME }}/atividade:latest"
