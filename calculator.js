@@ -36,7 +36,7 @@ const server = http.createServer((req, res) => {
                     </select>
                     <br><br>
 
-                    <button type="submit">Calculate</button>
+                    <button type="submit">Calculaaaaaate</button>
                 </form>
                 <p>Use this form to calculate results directly from the server.</p>
             </body>
