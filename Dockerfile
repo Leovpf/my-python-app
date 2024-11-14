@@ -2,7 +2,8 @@ FROM node:14
 
 WORKDIR /app
 
-COPY calculator.js .
+COPY ./calculator.js .
+
 
 EXPOSE 8097
 
